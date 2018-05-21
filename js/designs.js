@@ -14,6 +14,7 @@ let sizeH = $('#inputHeight').val();
 let sizeW = $('#inputWeight').val();
 console.log(sizeH);
 console.log(sizeW);
+makeGrid();
 
 $('#sizePicker').on('submit', function(evt){
   evt.preventDefault();
@@ -21,10 +22,17 @@ $('#sizePicker').on('submit', function(evt){
   sizeW = $('#inputWeight').val();
   console.log(sizeH);
   console.log(sizeW);
+  makeGrid();
 });
 
 function makeGrid() {
+  $('#pixelCanvas').children().remove();
 
-// Your code goes here!
-
+  for(let i = 0; i < sizeH; i++)
+    $('#pixelCanvas').append('<tr></tr>');
+  
+  $('tr').each(function(){
+    for(let j = 0; j < sizeW; j++)
+      $(this).append('<td></td>');
+  });
 }
