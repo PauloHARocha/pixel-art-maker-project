@@ -25,14 +25,39 @@ $('#sizePicker').on('submit', function(evt){
   makeGrid();
 });
 
-function makeGrid() {
-  $('#pixelCanvas').children().remove();
+// I believe this makeGrid() function is more intuitive, but is very slow
+// because of the constant change in the DOM
 
-  for(let i = 0; i < sizeH; i++)
-    $('#pixelCanvas').append('<tr></tr>');
-  
-  $('tr').each(function(){
+// function makeGrid() {
+//   let before = performance.now();
+//   $('#pixelCanvas').children().remove();
+//
+//   for(let i = 0; i < sizeH; i++)
+//     $('#pixelCanvas').append('<tr></tr>');
+//
+//   $('tr').each(function(){
+//     for(let j = 0; j < sizeW; j++)
+//       $(this).append('<td></td>');
+//   });
+//   console.log(performance.now()-before);
+// }
+
+let html = [];
+function makeGrid() {
+  //let before = performance.now();
+  $('#pixelCanvas').children().remove();
+  html = [];
+
+  for (i = 0; i < sizeH; i++) {
+    html.push('<tr>');
+
     for(let j = 0; j < sizeW; j++)
-      $(this).append('<td></td>');
-  });
+      html.push('<td></td>');
+
+    html.push('</tr>');
+  }
+
+  $("#pixelCanvas").append( html.join('') );
+
+  //console.log(performance.now()-before);
 }
