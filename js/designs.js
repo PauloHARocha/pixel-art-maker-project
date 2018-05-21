@@ -10,6 +10,19 @@ $('#colorPicker').on('change', function(){
   console.log(color);
 });
 
+let sizeH = $('#inputHeight').val();
+let sizeW = $('#inputWeight').val();
+console.log(sizeH);
+console.log(sizeW);
+
+$('#sizePicker').on('submit', function(evt){
+  evt.preventDefault();
+  sizeH = $('#inputHeight').val();
+  sizeW = $('#inputWeight').val();
+  console.log(sizeH);
+  console.log(sizeW);
+});
+
 function makeGrid() {
 
 // Your code goes here!
